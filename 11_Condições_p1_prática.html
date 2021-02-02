@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condições- parte 1</title>
+    <style>
+        #calcular{
+            color:rgb(37, 37, 36);
+            background-color: lightgray;
+            font-weight: bolder;
+            font-size: 18px;
+            }
+        #cls{
+            color: rgb(247, 14, 14);
+            background-color: lightgray;
+            font-weight: bolder;
+            font-size: 20px;
+            }
+        
+    </style>
+
+</head>
+<body>
+    <h1>Condições Parte-1</h1>
+    <hr>
+    <h2>Desvios condicionais - IF</h2>
+    <hr>
+    
+    <h2 style="text-decoration: underline; ">Calculadora simples</h2>
+    <div>
+        <label>Primeiro número[x]: </label>
+        <input type="number" value="1" name="" id="n1" style="width: 50px">
+        <br>
+        <label>Segundo número[y]: </label>
+        <input type="number" value="1" name="" id="n2" style="width: 50px">
+        <br>
+        <p>
+            <button onclick="somar()">+</button>
+            <button onclick="subtrair()">-</button>
+            <button onclick="multiplicar()">x</button>
+            <button onclick="dividir()">/</button>
+            <button onclick="div_int()">/ int</button>
+            <button onclick="div_resto()">%</button>
+        </p>
+            
+        <p>
+            <button onclick="exp2()">x^2</button>
+            <button onclick="exp()">x^y</button>
+            <button onclick="quadr()">2√x</button>
+            <button onclick="quadry()">y√x</button>
+        </p>
+        <p>
+            <button onclick="c()"  style="font-weight: bolder; color: red; font-size: 20px" > L i m p a r - d a d o s </button>
+        </p>
+        <p id='res' style="font-weight: bolder; font-size: 15px; background-color: lightgray; width: 300px;">Resultado:...................... </p>
+
+        <script>
+            function somar(){
+                var n1 = Number(document.getElementById('n1').value)
+                var n2 = Number(document.getElementById('n2').value)
+                var n3 = n1 + n2;
+                var res = document.getElementById('res');
+                res.innerHTML = `A adição de ${n1} e ${n2} é igual a ${n3}!`;
+            }
+            function subtrair(){
+                var n1 = Number(document.getElementById('n1').value)
+                var n2 = Number(document.getElementById('n2').value)
+                var n3 = n1 - n2;
+                var res = document.getElementById('res');
+                res.innerHTML = `A subtração de ${n1} e ${n2} é igual a ${n3}!`;
+            }
+            function multiplicar(){
+                var n1 = Number(document.getElementById('n1').value)
+                var n2 = Number(document.getElementById('n2').value)
+                var n3 = n1 * n2;
+                var res = document.getElementById('res');
+                res.innerHTML = `A multiplicação de ${n1} e ${n2} é igual a ${n3}!`;
+            }
+            function dividir(){
+                var n1 = Number(document.getElementById('n1').value)
+                var n2 = Number(document.getElementById('n2').value)
+                var n3 = n1 / n2;
+                var res = document.getElementById('res');
+                res.innerHTML = `A divisão de ${n1} por ${n2} é igual a ${n3.toFixed(4)}!`;
+            }
+            function div_int(){
+                var n1 = Number(document.getElementById('n1').value)
+                var n2 = Number(document.getElementById('n2').value)
+                var n3 = n1 / n2;
+                var res = document.getElementById('res');
+                res.innerHTML = `O inteiro da divisão de ${n1} por ${n2} é igual a ${parseInt(n3)}!`;
+            }
+            function div_resto(){
+                var n1 = Number(document.getElementById('n1').value)
+                var n2 = Number(document.getElementById('n2').value)
+                var n3 = n1 % n2;
+                var res = document.getElementById('res');
+                res.innerHTML = `O resto de ${n1} dividido ${n2} é igual a ${n3}!`;
+            }
+            function exp2(){
+                var n1 = Number(document.getElementById('n1').value)
+                var n2 = Number(document.getElementById('n2').value)
+                var n3 = n1 * n1
+                var res = document.getElementById('res')
+                document.getElementById('n2').value = 0;
+                res.innerHTML = `${n1} elevado ao quadrado é igual a ${n3}!`;
+            }
+            function exp(){
+                var n1 = Number(document.getElementById('n1').value)
+                var n2 = Number(document.getElementById('n2').value)
+                var n3 = Math.pow(n1, n2);
+                var res = document.getElementById('res');
+                res.innerHTML = `${n1} elevado a ${n2} é igual a ${n3.toFixed(2)}!`;
+            }
+            function quadr(){
+                var n1 = Number(document.getElementById('n1').value)
+                var n2 = Number(document.getElementById('n2').value)
+                var n3 = Math.sqrt(n1);
+                var res = document.getElementById('res');
+                document.getElementById('n2').value = 2
+                res.innerHTML = `Raiz quadrada de ${n1} é igual a ${n3.toFixed(2)}!`;
+            }
+            function quadry(){ /*Pesquisar*/
+                var n1 = Number(document.getElementById('n1').value)
+                var n2 = Number(document.getElementById('n2').value)
+                var n3 = n1 ** ( 1 / n2 );
+                var res = document.getElementById('res')
+                res.innerHTML = `Raiz ${n2} de ${n1} é igual a ${n3.toFixed(2)}!`;
+            }
+            function c(){
+                document.getElementById('n1').value= 0 
+                document.getElementById('n2').value= 0
+                document.getElementById('res').innerHTML = 'Resultado:......................'
+            }
+        </script>
+    </div>
+    <hr>
+    <h2 style="text-decoration: underline; ">Calcular RPM para torneamento, <br>furação ou fresamento.</h2>
+    <div>
+        <p>
+            <label for="">Diâmetro da peça/ferramenta[mm]: </label>
+            <input type="number" value='1' name="" id="diametro" style="width: 50px">
+        </p>
+        <p>
+            <label for="">Velocidade de corte  [ metros/min ]: </label>
+            <input type="number" value='1' name="" id="velocidade" style="width: 50px">   
+        </p>
+        
+            <button onclick="calcular()" id="calcular" onmouseenter ='enter()' onmouseout="out()" >Calcular RPM</button>
+            <button onclick="cls()" id="cls" onmouseenter ='enter1()' onmouseout="out1()">Limpar dados</button>
+            <p  id="rpm"><strong>Resultado: rotações/minuto</strong>
+            </p>
+            
+        
+        <script>
+            function enter(){
+                var move = document.getElementById('calcular')
+                move.style.backgroundColor='darkgray'
+            }
+            function out(){
+                var move = document.getElementById('calcular')
+                move.style.backgroundColor='lightgray'
+            }
+
+            function enter1(){
+                var move1 = document.getElementById('cls')
+                move1.style.backgroundColor='darkgray'
+            }
+            function out1(){
+                var move1 = document.getElementById('cls')
+                move1.style.backgroundColor='lightgray'
+            }
+
+            function calcular(){
+                diam = Number(document.getElementById('diametro').value)
+                vel = Number(document.getElementById('velocidade').value)
+                var rpm = document.getElementById('rpm')
+                var res = vel * 318.4 / diam
+                if ( diam <= 0 ){
+                    alert('ERROR!!! Diâmetro deve ser maior que "0"...')
+                } 
+                else if ( vel <= 0 ){
+                    alert('ERROR!!! Velocidade de corte deve ser maior que "0"...')
+                }
+                else{
+                    rpm.innerHTML += ` ${parseInt(res)} rotações/ minuto...`
+                    rpm.style.color='blue'
+                    rpm.style.fontSize='20px';
+                }
+            }
+            function cls(){
+                document.getElementById('diametro').value= 1
+                document.getElementById('velocidade').value = 1 
+                document.getElementById('rpm').innerHTML='Resultado: rotações/minuto'
+
+            }
+        </script>
+    </div>
+    <hr>
+</body>
+</html>
